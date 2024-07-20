@@ -45,7 +45,7 @@ $product_id = isset($_GET['product_id']) ? $_GET['product_id'] : '';
             </form>
         <?php else: ?>
             <div class="alert alert-warning">
-                <a href="login.php?redirect=review.php?product_id=<?php echo $product_id; ?>&message=Please login first before giving the review">Please login first before giving the review</a>
+                <a href="login.php?redirect=review.php&product_id=<?php echo $product_id; ?>&message=Please login first before giving the review">Please login first before giving the review</a>
             </div>
         <?php endif; ?>
     </div>

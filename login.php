@@ -19,6 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "<div class='alert alert-danger'>Invalid username or password.</div>";
     }
+} else {
+    if (isset($_GET['message'])) {
+        $message = $_GET['message'];
+        echo "<div class='alert alert-warning'>$message</div>";
+    }
 }
 ?>
 
