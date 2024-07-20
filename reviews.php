@@ -45,7 +45,7 @@ $result = $mysqli->query($query);
                         <tr>
                             <td><?php echo htmlspecialchars($row['product_name']); ?></td>
                             <td><?php echo htmlspecialchars($row['username'] ? $row['username'] : 'Joe Root'); ?></td>
-                            <td><?php echo htmlspecialchars($row['review']); ?></td>
+                            <td><?php echo ($row['review']); ?></td>
                         </tr>
                     <?php endwhile; ?>
                 </tbody>

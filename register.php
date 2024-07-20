@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Insert new user
         $sql = "INSERT INTO users (username, password, role) VALUES ('$username', '$password', '$role')";
         $mysqli->query($sql);
-        echo "<div class='alert alert-success'>Registration successful!</div>";
+        echo "<div class='alert alert-success'>Registration successful! Visit <a href='/ecomvuln/login.php'>Login</a> Page </div>";
     }
 }
 ?>
