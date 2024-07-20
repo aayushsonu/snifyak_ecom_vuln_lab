@@ -7,11 +7,12 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
 
-// Query to get all reviews along with product names
+// Query to get all reviews along with product names and usernames
 $query = "
-    SELECT reviews.id, products.name AS product_name, reviews.review
+    SELECT reviews.id, products.name AS product_name, reviews.review, users.username
     FROM reviews
     JOIN products ON reviews.product_id = products.id
+    LEFT JOIN users ON reviews.user_id = users.id
     ORDER BY reviews.id DESC
 ";
 $result = $mysqli->query($query);
@@ -35,6 +36,7 @@ $result = $mysqli->query($query);
                 <thead>
                     <tr>
                         <th>Product Name</th>
+                        <th>Username</th>
                         <th>Review</th>
                     </tr>
                 </thead>
@@ -42,7 +44,8 @@ $result = $mysqli->query($query);
                     <?php while ($row = $result->fetch_assoc()): ?>
                         <tr>
                             <td><?php echo htmlspecialchars($row['product_name']); ?></td>
-                            <td><?php echo ($row['review']); ?></td>
+                            <td><?php echo htmlspecialchars($row['username'] ? $row['username'] : 'Joe Root'); ?></td>
+                            <td><?php echo htmlspecialchars($row['review']); ?></td>
                         </tr>
                     <?php endwhile; ?>
                 </tbody>
